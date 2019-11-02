@@ -35,36 +35,38 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 <style>
-  .white-popup-block
-  {
-    width: 50%;
-    margin: auto;
-    background: white;
-  }
-  .form-container{
-    width: 90%;
-    margin: auto;
-  }
-  .input-box{
-    height: 30px;
-    width: 100%;
-    border: 1px solid black;
-    border-radius: 10px;
-  }
-  .input-container{
-    width: 70%;
-    margin: auto;
-  }
-  .text-align{
-    align-content: center;
-  }
-  .buy-button-container{
-	  text-align: center;
-  }
-	.buy-button{
-		background-color: black;
-		color: #ffffff;
-		border-radius: 20px;
+	.white-popup-block{
+		width: 50%;
+		margin: auto;
+		background: white;
+  	}
+  	.form-container{
+		width: 90%;
+		margin: auto;
+ 	}
+  	.input-box{
+		height: 30px;
+		width: 100%;
+		border: 1px solid black;
+		border-radius: 10px;
+  	}
+  	.input-container{
+		width: 70%;
+		margin: auto;
+  	}
+  	.text-align{
+    	align-content: center;
+  	}
+	.account-dropdown{
+		background-color: transparent;
+		color: #b2b2b2;
+		border: none;
+	}
+	.account-dropdown-box{
+		z-index: 1101;
+	}
+	.account-dropdown-elements{
+		color: black;
 	}
 	.account-setting-container{
         width: 50%;
@@ -93,9 +95,11 @@
     .button-position{
        text-align:center;
     }
-	.buy-methods-display{
-		display: inline;
+	.purchase-history-container{
+		width: 70%;
+        margin: auto;
 	}
+	
 </style>
 
 
@@ -111,7 +115,7 @@
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
 					<div class="left-top-bar">
-					  Miễn phí giao hàng tiêu chuẩn cho hóa đơn trên 2.000.000 VNĐ
+					  Miễn phí giao hàng tiêu chuẩn cho hóa đơn trên 3.000.000 VNĐ
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
@@ -119,9 +123,16 @@
 							Trợ giúp
 						</a>
 
-						<a href="#test-form" class="flex-c-m trans-04 p-lr-25 popup-with-form">
-							Tài khoản
-						</a>
+						<div class="dropdown">
+							<button class="btn btn-secondary dropdown-toggle account-dropdown" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Âu Dương Gia Tuấn
+							</button>
+							<div class="dropdown-menu account-dropdown-box" aria-labelledby="dropdownMenuButton">
+								<a class="dropdown-item" href="account-setting"><p class=" account-dropdown-elements">Quản lý tài khoản</p></a>
+								<a class="dropdown-item" href="purchase-history"><p class=" account-dropdown-elements">Lịch sử mua hàng</p></a>
+								<a class="dropdown-item" href="home"><p class=" account-dropdown-elements">Đăng xuất</p></a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -148,6 +159,7 @@
 							<li class="label1" data-label1="hot">
 								<a href="cart">Giỏ hàng</a>
 							</li>
+
 
 						</ul>
 					</div>	
@@ -216,9 +228,16 @@
 							Trợ giúp
 						</a>
 
-						<a href="#test-form" class="flex-c-m p-lr-10 trans-04 popup-with-form">
-							Tài khoản
-						</a>
+						<div class="dropdown">
+							<button class="btn btn-secondary dropdown-toggle account-dropdown" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Âu Dương Gia Tuấn
+							</button>
+							<div class="dropdown-menu account-dropdown-box" aria-labelledby="dropdownMenuButton">
+								<a class="dropdown-item" href="account-setting"><p class=" account-dropdown-elements">Quản lý tài khoản</p></a>
+								<a class="dropdown-item" href="purchase-history"><p class=" account-dropdown-elements">Lịch sử mua hàng</p></a>
+								<a class="dropdown-item" href="home"><p class=" account-dropdown-elements">Đăng xuất</p></a>
+							</div>
+						</div>
 					</div>
 				</li>
 			</ul>
@@ -238,7 +257,6 @@
 				<li>
 					<a href="about">Thông tin chung</a>
 				</li>
-
 			</ul>
 		</div>
 
@@ -656,7 +674,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
       <a href="#test-form3" class="popup-with-form" >Quên mật khẩu?</a>
       <br>
       <br>
-      <button type="button" class="btn btn-outline-secondary"><a href="account">Đăng nhập</a></button>
+      <button type="button" class="btn btn-outline-secondary"><a href="home">Đăng nhập</a></button>
     </div>
     <br>
     <p class="text-align">Bạn chưa có tài khoản? <a href="#test-form2" class="popup-with-form" >Đăng ký ngay</a></p>
@@ -762,7 +780,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		$('.js-addwish-b2').each(function(){
 			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
 			$(this).on('click', function(){
-				swal(nameProduct, "đã được thêm vào yêu thích !", "success");
+				swal(nameProduct, "is added to wishlist !", "success");
 
 				$(this).addClass('js-addedwish-b2');
 				$(this).off('click');
@@ -773,7 +791,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
 
 			$(this).on('click', function(){
-				swal(nameProduct, "đã được thêm vào yêu thích !", "success");
+				swal(nameProduct, "is added to wishlist !", "success");
 
 				$(this).addClass('js-addedwish-detail');
 				$(this).off('click');
@@ -785,7 +803,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		$('.js-addcart-detail').each(function(){
 			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
 			$(this).on('click', function(){
-				swal(nameProduct, "đã được thêm vào giỏ hàng !", "success");
+				swal(nameProduct, "is added to cart !", "success");
 			});
 		});
 	

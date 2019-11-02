@@ -4,13 +4,17 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var homeRouter = require('./routes/home');
-var shopRouter = require('./routes/shop');
-var productRouter = require('./routes/product');
-var cartRouter = require('./routes/cart');
-var accountRouter = require('./routes/account');
+var indexRouter = require('./routes/client/index');
+var usersRouter = require('./routes/client/users');
+var homeRouter = require('./routes/client/home');
+var shopRouter = require('./routes/client/shop');
+var productRouter = require('./routes/client/product');
+var cartRouter = require('./routes/client/cart');
+var accountRouter = require('./routes/client/account');
+var accountSettingRouter = require('./routes/client/account-setting.js');
+var buyRouter = require('./routes/client/buy.js');
+var purchaseHistoryRouter = require('./routes/client/purchase-history.js');
+
 var app = express();
 
 // view engine setup
@@ -30,6 +34,9 @@ app.use('/shop', shopRouter);
 app.use('/product', productRouter);
 app.use('/cart', cartRouter);
 app.use('/account', accountRouter);
+app.use('/account-setting', accountSettingRouter);
+app.use('/buy', buyRouter);
+app.use('/purchase-history', purchaseHistoryRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
