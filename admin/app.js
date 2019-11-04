@@ -7,8 +7,9 @@ var logger = require('morgan');
 
 
 //admin====================================================================
-var homeRouter = require('./routes/index');
-var adIndexRouter = require('./routes/admin');
+var indexRouter = require('./routes/index');
+var homeRouter = require('./routes/home');
+var topTenRouter = require('./routes/top-ten');
 var statisticRouter = require('./routes/statistic');
 var customersRouter = require('./routes/customers-manage');
 var shopManageRouter = require('./routes/shopping-manage');
@@ -17,6 +18,7 @@ var changeProductRouter = require('./routes/change-product');
 var orderManageRouter = require('./routes/order-manage');
 var changeOrderRouter = require('./routes/change-info-order');
 var addProductRouter = require('./routes/add-product');
+var addAccountRouter = require('./routes/add-account');
 
 
 //=========================================================================
@@ -36,8 +38,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //admin===================================================================
 
-app.use('/', homeRouter);
-app.use('/admin', adIndexRouter);
+app.use('/', indexRouter);
+app.use('/home', homeRouter);
+app.use('/top-ten', topTenRouter);
 app.use('/statistic', statisticRouter);
 app.use('/customers-manage', customersRouter);
 app.use('/shopping-manage', shopManageRouter);
@@ -46,6 +49,7 @@ app.use('/change-product', changeProductRouter);
 app.use('/order-manage', orderManageRouter);
 app.use('/change-info-order', changeOrderRouter);
 app.use('/add-product', addProductRouter);
+app.use('/add-account', addAccountRouter);
 
 //=========================================================================
 // catch 404 and forward to error handler
